@@ -8,9 +8,16 @@ Capture whatever your mac is playing to a .wav file on your Desktop—as simply 
 
 #### Installation
 
-##### El Capitan 
+##### El Capitan ~ High Sierra
 
-**NB: WavTap is completely broken on El Capitan** due to Apple's [System Integrity Protection] (https://en.wikipedia.org/wiki/System_Integrity_Protection). The next release of WavTap will fix this.
+Before install, go to recovery mode and type it to terminal.
+
+```shell
+csrutil disable
+reboot
+```
+
+**!CAUTION!** It will disable [System Integrity Protection](https://support.apple.com/HT204899) from your OS.
 
 ##### Yosemite
 
