@@ -21,7 +21,6 @@ $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext: build
 	sudo chmod -R 700 $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext
 	sudo chown -R root:wheel $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext
 	sudo kextload -v $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext
-	sudo kextutil $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext
 
 uninstall:
 	if [[ "$(shell kextstat | grep $(PRODUCT_NAME) | grep -v grep)" ]]; then sudo kextunload $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext; fi
