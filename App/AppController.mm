@@ -89,7 +89,6 @@
     item = [mMenu addItemWithTitle:@"Start Recording" action:@selector(toggleRecord) keyEquivalent:@""];
     [item setTarget:self];
     [item setTag:(NSInteger)mTagForToggleRecord];
-    [self setToggleRecordHotKey:@" "];
     NSString *historyRecordMenuItemTitle = @"Save Last Second";
     item = [mMenu addItemWithTitle:historyRecordMenuItemTitle action:@selector(historyRecord) keyEquivalent:@""];
     [item setTarget:self];
@@ -105,12 +104,6 @@
   [item setTag:(NSInteger)mTagForQuit];
   [item setTarget:self];
   [mMenu setDelegate:(id)self];
-}
-
-- (void)setToggleRecordHotKey:(NSString*)keyEquivalent {
-  NSMenuItem *item = [mMenu itemWithTag:mTagForToggleRecord];
-  [item setKeyEquivalentModifierMask: NSControlKeyMask | NSCommandKeyMask];
-  [item setKeyEquivalent:keyEquivalent];
 }
 
 - (void)initConnections {
