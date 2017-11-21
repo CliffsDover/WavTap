@@ -8,7 +8,11 @@ build: $(KEXT_BUILD_DIR)/$(PRODUCT_NAME).kext
 
 $(KEXT_BUILD_DIR)/$(PRODUCT_NAME).kext:
 	cd $(KEXT_DIR)
-	xcodebuild -project $(KEXT_DIR)/$(PRODUCT_NAME).xcodeproj -target WavTapDriver -configuration $(BUILD_TYPE) clean build
+	xcodebuild \
+		CONFIGURATION_BUILD_DIR=$(KEXT_BUILD_DIR)
+		-project $(KEXT_DIR)/$(PRODUCT_NAME).xcodeproj \
+		-target WavTapDriver \
+		-configuration $(BUILD_TYPE) clean build
 
 install: $(INSTALL_DESTINATION)/$(PRODUCT_NAME).kext
 
