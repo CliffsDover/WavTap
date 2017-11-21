@@ -2,7 +2,7 @@ PRODUCT_NAME=WavTap
 KEXT_DIR=$$(pwd)
 KEXT_BUILD_DIR=$(KEXT_DIR)/Build/UninstalledProducts
 BUILD_TYPE=Deployment
-INSTALL_DESTINATION=/System/Library/Extensions
+INSTALL_DESTINATION=/Library/Extensions
 
 build: $(KEXT_BUILD_DIR)/$(PRODUCT_NAME).kext
 
