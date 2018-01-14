@@ -53,7 +53,6 @@
     if (0 == strcmp("WavTap", (*i).mName)) mWavTapDeviceID = (*i).mID;
   }
   [self initConnections];
-  [self bindHotKeys];
   [self initStatusBar];
   [self buildMenu];
 }
@@ -148,19 +147,6 @@ OSStatus historyRecordHotKeyHandler(EventHandlerCallRef nextHandler, EventRef an
   return noErr;
 }
 
-- (void)bindHotKeys {
-  recordHotKeyFunction = NewEventHandlerUPP(recordHotKeyHandler);
-  EventTypeSpec eventType0;
-  eventType0.eventClass = kEventClassKeyboard;
-  eventType0.eventKind = kEventHotKeyReleased;
-  InstallApplicationEventHandler(recordHotKeyFunction, 1, &eventType0, (void *)CFBridgingRetain(self), NULL);
-  EventHotKeyRef theRef0;
-  EventHotKeyID keyID0;
-  keyID0.signature = 'a';
-  keyID0.id = 0;
-  RegisterEventHotKey(49, cmdKey+controlKey, keyID0, GetApplicationEventTarget(), 0, &theRef0);
-}
-
 - (void)launchRecordProcess {
   NSString *sharedSupportPath = [[NSBundle bundleForClass:AppController.class] sharedSupportPath];
   NSString *scriptName = @"record";
@@ -180,7 +166,7 @@ OSStatus historyRecordHotKeyHandler(EventHandlerCallRef nextHandler, EventRef an
   NSString *scriptExtension = @"sh";
   NSString *scriptAbsolutePath = [NSString stringWithFormat:@"%@/%@.%@", sharedSupportPath, scriptName, scriptExtension];
   NSTask *task=[[NSTask alloc] init];
-  NSArray *argv=[NSArray arrayWithObjects:nil];
+  NSArray *argv=[NSArray array];
   [task setArguments: argv];
   [task setLaunchPath:scriptAbsolutePath];
   [task launch];
